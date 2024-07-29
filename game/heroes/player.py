@@ -1,11 +1,13 @@
 import random
-from all_heroes_list import heroes
+from collections import Counter
+from .all_heroes_list import heroes
 
 
 class Hero:
     def __init__(self, hero_name):
         self.name = hero_name
         self.hero = heroes[hero_name]
+        self.cards = self.hero["start_deck"]
 
 
 class Player(Hero):
@@ -18,15 +20,6 @@ class Player(Hero):
         self.attack = 0
 
         # Cards
-        self.cards = self.hero.cards
-
         self.cards_in_hand = []
-        self.cards_to_draw = []
+        self.cards_to_draw = self.cards.copy()
         self.cards_played = []
-
-        # Start
-        self.start()
-
-    def start(self):
-        self.cards_in_hand = random.sample(self.cards, 5)
-        self.cards_to_draw = [card for card in self.cards if card not in self.cards_in_hand]
