@@ -1,6 +1,6 @@
 import pytest
-from game.cards import Card
-from game.player import Player, Hero
+from game.cards.card import Card
+from game.heroes.player import Player, Hero
 
 
 @pytest.fixture

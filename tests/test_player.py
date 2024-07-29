@@ -1,5 +1,5 @@
 import pytest
-from game.player import Hero, Player
+from game.heroes.player import Hero, Player
 
 
 

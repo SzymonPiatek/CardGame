@@ -4,3 +4,5 @@ venv
 __pycache__
 game/__pycache__
 tests/__pycache__
+cards/__pycache__
+heroes/__pycache__

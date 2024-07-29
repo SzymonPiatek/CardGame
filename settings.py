@@ -18,7 +18,7 @@ settings = {
             "on_hand": True,
         },
         3: {
-            "name": "Black magic",
+            "name": "Dark Arts",
             "positive": False,
             "on_hand": False,
         },
