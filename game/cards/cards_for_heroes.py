@@ -1,6 +1,5 @@
 cards_for_heroes = {
     "Alohomora": {
-        "buy_cost": 0,
         "card_type": 0,
         "effect": {
             "active_player": {
@@ -9,7 +8,6 @@ cards_for_heroes = {
         },
     },
     "Błyskawica": {
-        "buy_cost": 0,
         "card_type": 1,
         "effect": {
             "active_player": {
@@ -21,7 +19,6 @@ cards_for_heroes = {
         }
     },
     "Peleryna-niewidka": {
-        "buy_cost": 0,
         "card_type": 1,
         "effect": {
             "active_player": {
@@ -31,7 +28,6 @@ cards_for_heroes = {
         }
     },
     "Hedwiga": {
-        "buy_cost": 0,
         "card_type": 2,
         "effect": {
             "active": {
@@ -41,7 +37,6 @@ cards_for_heroes = {
         }
     },
     "Zmiatacz 11": {
-        "buy_cost": 0,
         "card_type": 1,
         "effect": {
             "active_player": {
@@ -53,7 +48,6 @@ cards_for_heroes = {
         }
     },
     "Fasolki wszystkich smaków Bertiego Botta": {
-        "buy_cost": 0,
         "card_type": 1,
         "effect": {
             "active_player": {
@@ -63,7 +57,6 @@ cards_for_heroes = {
         }
     },
     "Świstoświnka": {
-        "buy_cost": 0,
         "card_type": 2,
         "effect": {
             "active": {
@@ -73,7 +66,6 @@ cards_for_heroes = {
         }
     },
     "Przypominajka": {
-        "buy_cost": 0,
         "card_type": 1,
         "effect": {
             "active_player": {
@@ -85,7 +77,6 @@ cards_for_heroes = {
         }
     },
     "Mandragora": {
-        "buy_cost": 0,
         "card_type": 1,
         "effect": {
             "active_player": {
@@ -95,7 +86,6 @@ cards_for_heroes = {
         }
     },
     "Teodora": {
-        "buy_cost": 0,
         "card_type": 2,
         "effect": {
             "active": {
@@ -105,7 +95,6 @@ cards_for_heroes = {
         }
     },
     "Zmieniacz czasu": {
-        "buy_cost": 0,
         "card_type": 1,
         "effect": {
             "active_player": {
@@ -117,7 +106,6 @@ cards_for_heroes = {
         }
     },
     "Baście Barda Beedle'a": {
-        "buy_cost": 0,
         "card_type": 1,
         "effect": {
             "active_player": {
@@ -127,7 +115,6 @@ cards_for_heroes = {
         }
     },
     "Krzywołap": {
-        "buy_cost": 0,
         "card_type": 2,
         "effect": {
             "active": {
