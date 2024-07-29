@@ -1,5 +1,5 @@
 import pytest
-from game.cards import BlackMagicCard
+from game.cards import Card
 from game.player import Player, Hero
 
 
@@ -7,12 +7,12 @@ from game.player import Player, Hero
 def lord_voldemort():
     effect = {
         "active_player": {
-            "hp": 1,
-            "card": 2,
+            "hp": -1,
+            "card": -2,
         },
         
         "other_players": {
-            "card": 1,
+            "card": -1,
         },
 
         "death_eater" : {
@@ -20,7 +20,7 @@ def lord_voldemort():
         },
     }
 
-    return BlackMagicCard(name="Lord Voldemort", effect=effect)
+    return Card(name="Lord Voldemort", effect=effect, card_type_id=4)
 
 @pytest.fixture
 def harry():
@@ -31,9 +31,8 @@ def harry():
     return Hero(name = "Harry", cards = cards)
 
 
-
 def test_effect_of_black_magic_card(harry, lord_voldemort):
     player = Player(harry)
     player.start()
 
-    lord_voldemort.revealing_a_card()
+    lord_voldemort.use_card()
