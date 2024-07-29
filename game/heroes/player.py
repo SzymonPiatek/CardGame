@@ -1,5 +1,3 @@
-import random
-from collections import Counter
 from .all_heroes_list import heroes
 
 

@@ -1,4 +1,4 @@
-cards_for_heroes = {
+each_card_for_heroes = {
     "Alohomora": {
         "card_type": 0,
         "effect": {

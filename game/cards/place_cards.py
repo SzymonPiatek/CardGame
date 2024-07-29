@@ -1,4 +1,4 @@
-place_cards = {
+each_place_card = {
     "Ulica pokątna": {
         "card_type": 5,
         "max_death_eater": 4,
@@ -18,3 +18,8 @@ place_cards = {
         }
     },
 }
+
+place_cards = [
+    {"Ulica pokątna": each_place_card["Ulica pokątna"]},
+    {"Zwierciadło Ain Eingarp": each_place_card["Zwierciadło Ain Eingarp"]},
+]

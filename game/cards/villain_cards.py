@@ -1,4 +1,4 @@
-villain_cards = {
+each_villain_card = {
     "Kwiryniusz Quirrell": {
         "card_type": 4,
         "effect": {
@@ -39,3 +39,9 @@ villain_cards = {
         "hp": 5,
     },
 }
+
+villain_cards = [
+    {"Kwiryniusz Quirrell": each_villain_card["Kwiryniusz Quirrell"]},
+    {"Crabbe i Goyle": each_villain_card["Crabbe i Goyle"]},
+    {"Draco Malfoy": each_villain_card["Draco Malfoy"]},
+]
