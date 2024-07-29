@@ -1,6 +1,7 @@
 venv
 .venv
 
+.pytest_cache
 __pycache__
 game/__pycache__
 tests/__pycache__

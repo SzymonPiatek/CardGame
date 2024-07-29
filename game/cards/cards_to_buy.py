@@ -310,4 +310,5 @@ ally_cards = {
     },
 }
 
-cards_to_buy = spell_cards + item_cards + ally_cards
+cards_to_buy = {card_name: card_details for card_dict in [spell_cards, item_cards, ally_cards] for card_name, card_details in card_dict.items()}
+

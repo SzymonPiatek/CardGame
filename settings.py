@@ -3,32 +3,32 @@ settings = {
 
     "card": {
         0: {
-            "name": "Spell",
+            "name": "Zaklęcie",
             "positive": True,
             "on_hand": True,
         },
         1: {
-            "name": "Item",
+            "name": "Przedmiot",
             "positive": True,
             "on_hand": True,
         },
         2: {
-            "name": "Ally",
+            "name": "Sprzymierzeniec",
             "positive": True,
             "on_hand": True,
         },
         3: {
-            "name": "Dark Arts",
+            "name": "Czarna magia",
             "positive": False,
             "on_hand": False,
         },
         4: {
-            "name": "Villain",
+            "name": "Czarny charakter",
             "positive": False,
             "on_hand": False,
         },
         5: {
-            "name": "Place",
+            "name": "Miejsce",
             "positive": 0,
             "on_hand": False,
         },

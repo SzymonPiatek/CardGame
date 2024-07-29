@@ -1,16 +1,18 @@
 import random
+from all_heroes_list import heroes
 
 
 class Hero:
-    def __init__(self, name, cards):
-        self.name = name
-        self.cards = cards
+    def __init__(self, hero_name):
+        self.name = hero_name
+        self.hero = heroes[hero_name]
 
 
-class Player:
-    def __init__(self, hero):
+class Player(Hero):
+    def __init__(self, hero_name):
+        super().__init__(hero_name)
+        
         # Values
-        self.hero = hero
         self.hp = 10
         self.money = 0
         self.attack = 0

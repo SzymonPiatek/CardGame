@@ -3,7 +3,7 @@ cards_for_heroes = {
         "card_type": 0,
         "effect": {
             "active_player": {
-                "money": 0,
+                "money": 1,
             }
         },
     },
