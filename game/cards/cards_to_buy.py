@@ -183,3 +183,5 @@ ally_cards = [
 ]
 
 cards_to_buy = spell_cards + item_cards + ally_cards
+
+each_card_to_buy = {**each_spell_card, **each_item_card, **each_ally_card}

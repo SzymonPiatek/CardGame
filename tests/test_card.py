@@ -5,7 +5,7 @@ def test_card_for_hero():
     new_card = Card(card_name="Alohomora")
 
     new_card_name = new_card.name
-    new_card_type = new_card.get_card_type_name()
+    new_card_type = new_card.card_type
     new_card_effect = new_card.card["effect"]
     
     print("\n")
@@ -25,7 +25,7 @@ def test_card_to_buy():
     new_card = Card(card_name="Descendo")
 
     new_card_name = new_card.name
-    new_card_type = new_card.get_card_type_name()
+    new_card_type = new_card.card_type
     new_card_effect = new_card.card["effect"]
     new_card_buy_cost = new_card.card["buy_cost"]
 
@@ -48,7 +48,7 @@ def test_dark_arts_card():
     new_card = Card(card_name="Expulso")
 
     new_card_name = new_card.name
-    new_card_type = new_card.get_card_type_name()
+    new_card_type = new_card.card_type
     new_card_effect = new_card.card["effect"]
 
     print("\n")
@@ -68,7 +68,7 @@ def test_place_card():
     new_card = Card(card_name="Ulica pokątna")
 
     new_card_name = new_card.name
-    new_card_type = new_card.get_card_type_name()
+    new_card_type = new_card.card_type
     new_card_effect = new_card.card["effect"]
 
     print("\n")
@@ -88,7 +88,7 @@ def test_villain_card():
     new_card = Card(card_name="Kwiryniusz Quirrell")
 
     new_card_name = new_card.name
-    new_card_type = new_card.get_card_type_name()
+    new_card_type = new_card.card_type
     new_card_effect = new_card.card["effect"]
     new_card_prize = new_card.card["prize"]
     new_card_hp = new_card.card["hp"]
