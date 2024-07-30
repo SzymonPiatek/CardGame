@@ -8,8 +8,5 @@ class Card:
         self.card = each_card[card_name]
         self.card_type = settings["card"][self.card["card_type"]]["name"]
         self.positive = settings["card"][self.card["card_type"]]["positive"]
-        self.on_hand = settings["card"][self.card["card_type"]]["on_hand"]
-
-    def use_card(self):
-        pass
-    
+        self.can_be_on_hand = settings["card"][self.card["card_type"]]["can_be_on_hand"]
+        self.effect = self.card["effect"]

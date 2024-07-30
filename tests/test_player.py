@@ -2,7 +2,7 @@ from game.heroes.player import Player
 
 
 def test_player():
-    new_player = Player(hero_name="Harry Potter")
+    new_player = Player(hero_id=0)
     new_player_cards = [list(card.keys())[0] for card in new_player.cards]
     
     print("\n")
@@ -18,6 +18,6 @@ def test_player():
     assert new_player.money == 0
     assert new_player.attack == 0
     assert len(new_player.cards) == 10
-    assert len(new_player.cards_in_hand) == 0
+    assert len(new_player.cards_on_hand) == 0
     assert len(new_player.cards_to_draw) == 10
     assert len(new_player.cards_played) == 0

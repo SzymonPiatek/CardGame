@@ -1,4 +1,5 @@
 from game.cards.card import Card
+from game.heroes.player import Player
 
 
 def test_card_for_hero():
@@ -114,3 +115,29 @@ def test_villain_card():
         }
     }
     assert new_card_hp == 6
+
+def test_use_card_to_buy():
+    # Players
+    player_one = Player(hero_id=0) 
+    player_two = Player(hero_id=1) 
+
+    players = [player_one, player_two]
+
+    # Cards
+    card_one = Card(card_name="Descendo")
+
+    # Add card to Player One deck
+    player_one.cards_on_hand.append(card_one)
+
+    # Test actual deck
+    assert len(player_one.cards_on_hand) == 1
+
+    # Simulate game
+    player_one.active = True
+
+    # Player One use card
+    player_one.use_card(card = player_one.cards_on_hand[0], players=players)
+
+    # Test actual stats
+    assert player_one.attack == 2
+    assert player_two.attack == 0
