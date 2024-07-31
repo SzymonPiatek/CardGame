@@ -88,6 +88,29 @@ def test_villain_card():
     }
     assert new_card_hp == 6
 
+def test_use_card_for_hero():
+    # Players
+    player_one = Player(hero_id=0) 
+    player_two = Player(hero_id=1) 
+
+    players = [player_one, player_two]
+
+    # Test actual deck
+    assert len(player_one.cards_on_hand) == 5
+
+    # Simulate game
+    player_one.active = True
+
+    # Player One use card
+    this_card = player_one.identify_card(card_name="Alohomora")
+    player_one.use_card(card=this_card, players=players)
+
+    # Test actual stats
+    assert player_one.money == 1
+    assert player_two.money == 0
+    assert len(player_one.cards_on_hand) == 4
+    assert len(player_one.cards_played) == 1
+
 def test_use_card_to_buy():
     # Players
     player_one = Player(hero_id=0) 
@@ -114,3 +137,5 @@ def test_use_card_to_buy():
     assert player_one.attack == 2
     assert player_two.attack == 0
     assert len(player_one.cards_on_hand) == 5
+    assert len(player_one.cards_played) == 1
+

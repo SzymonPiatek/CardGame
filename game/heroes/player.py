@@ -1,4 +1,5 @@
 from settings import settings
+from game.cards.card import Card
 import random
 
 
@@ -7,7 +8,11 @@ class Hero:
         self.hero = settings["hero"][hero_id]
         self.name = self.hero["name"]
         self.description = self.hero["description"]
-        self.cards = self.hero["start_deck"]
+        self.cards = []
+
+        for card in self.hero["start_deck"]:
+            new_card = Card(list(card.keys())[0])
+            self.cards.append(new_card)
 
 
 class Player(Hero):
@@ -39,6 +44,11 @@ class Player(Hero):
     def take_card(self):
         pass
 
+    def identify_card(self, card_name):
+        for card in self.cards_on_hand:
+            if card.name == card_name:
+                return card
+
     def use_card(self, card, players):
         all_players = players.copy()
         active_player = False
@@ -66,6 +76,9 @@ class Player(Hero):
                 elif new_key == "attack":
                     for player in effect_for:
                         player.attack += new_values
+                elif new_key == "money":
+                    for player in effect_for:
+                        player.money += new_values
                 elif new_key == "card":
                     for player in effect_for:
                         for _ in range(new_values):
@@ -75,3 +88,4 @@ class Player(Hero):
                         pass
 
         self.cards_on_hand.remove(card)
+        self.cards_played.append(card)
