@@ -18,6 +18,6 @@ def test_player():
     assert new_player.money == 0
     assert new_player.attack == 0
     assert len(new_player.cards) == 10
-    assert len(new_player.cards_on_hand) == 0
-    assert len(new_player.cards_to_draw) == 10
+    assert len(new_player.cards_on_hand) == 5
+    assert len(new_player.cards_to_draw) == 5
     assert len(new_player.cards_played) == 0

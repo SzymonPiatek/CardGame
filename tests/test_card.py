@@ -8,11 +8,6 @@ def test_card_for_hero():
     new_card_name = new_card.name
     new_card_type = new_card.card_type
     new_card_effect = new_card.card["effect"]
-    
-    print("\n")
-    print(f"Name: {new_card_name}")
-    print(f"Card type: {new_card_type}")
-    print(f"Card effect: {new_card_effect}")
 
     assert new_card_name == "Alohomora"
     assert new_card_type == "Zaklęcie"
@@ -30,12 +25,6 @@ def test_card_to_buy():
     new_card_effect = new_card.card["effect"]
     new_card_buy_cost = new_card.card["buy_cost"]
 
-    print("\n")
-    print(f"Name: {new_card_name}")
-    print(f"Card type: {new_card_type}")
-    print(f"Card effect: {new_card_effect}")
-    print(f"Card buy cost: {new_card_buy_cost}")
-
     assert new_card_name == "Descendo"
     assert new_card_type == "Zaklęcie"
     assert new_card_effect == {
@@ -52,11 +41,6 @@ def test_dark_arts_card():
     new_card_type = new_card.card_type
     new_card_effect = new_card.card["effect"]
 
-    print("\n")
-    print(f"Name: {new_card_name}")
-    print(f"Card type: {new_card_type}")
-    print(f"Card effect: {new_card_effect}")
-
     assert new_card_name == "Expulso"
     assert new_card_type == "Czarna magia"
     assert new_card_effect == {
@@ -71,11 +55,6 @@ def test_place_card():
     new_card_name = new_card.name
     new_card_type = new_card.card_type
     new_card_effect = new_card.card["effect"]
-
-    print("\n")
-    print(f"Name: {new_card_name}")
-    print(f"Card type: {new_card_type}")
-    print(f"Card effect: {new_card_effect}")
 
     assert new_card_name == "Ulica pokątna"
     assert new_card_type == "Miejsce"
@@ -93,13 +72,6 @@ def test_villain_card():
     new_card_effect = new_card.card["effect"]
     new_card_prize = new_card.card["prize"]
     new_card_hp = new_card.card["hp"]
-
-    print("\n")
-    print(f"Name: {new_card_name}")
-    print(f"Card type: {new_card_type}")
-    print(f"Card effect: {new_card_effect}")
-    print(f"Card prize: {new_card_prize}")
-    print(f"Card hp: {new_card_hp}")
 
     assert new_card_name == "Kwiryniusz Quirrell"
     assert new_card_type == "Czarny charakter"
@@ -130,14 +102,15 @@ def test_use_card_to_buy():
     player_one.cards_on_hand.append(card_one)
 
     # Test actual deck
-    assert len(player_one.cards_on_hand) == 1
+    assert len(player_one.cards_on_hand) == 6
 
     # Simulate game
     player_one.active = True
 
     # Player One use card
-    player_one.use_card(card = player_one.cards_on_hand[0], players=players)
+    player_one.use_card(card=card_one, players=players)
 
     # Test actual stats
     assert player_one.attack == 2
     assert player_two.attack == 0
+    assert len(player_one.cards_on_hand) == 5

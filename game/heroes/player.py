@@ -1,4 +1,5 @@
 from settings import settings
+import random
 
 
 class Hero:
@@ -25,6 +26,15 @@ class Player(Hero):
         self.cards_on_hand = []
         self.cards_to_draw = self.cards.copy()
         self.cards_played = []
+
+        self.start()
+
+    def start(self):
+        cards = random.sample(self.cards_to_draw, 5)
+
+        for card in cards:
+            self.cards_on_hand.append(card)
+            self.cards_to_draw.remove(card)
 
     def take_card(self):
         pass
@@ -63,3 +73,5 @@ class Player(Hero):
                 elif new_key == "death_eater":
                     for player in effect_for:
                         pass
+
+        self.cards_on_hand.remove(card)
