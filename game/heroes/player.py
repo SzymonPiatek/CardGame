@@ -41,8 +41,35 @@ class Player(Hero):
             self.cards_on_hand.append(card)
             self.cards_to_draw.remove(card)
 
+    def check_max_hp(self, value):
+        if value >= 1:
+            if self.hp >= 10:
+                return False
+            else:
+                return True
+        else:
+            if self.hp == 0:
+                return False
+            else:
+                return True
+            
+    def check_max_card(self, value):
+        if value >= 1:
+            if len(self.cards_to_draw) == 0:
+                return False
+            else:
+                return True
+        else:
+            if len(self.cards_on_hand) == 0:
+                return False
+            else:
+                return True
+
     def take_card(self):
-        pass
+        if len(self.cards_to_draw) >= 1:
+            card = random.sample(self.cards_to_draw, 1)[0]
+            self.cards_to_draw.remove(card)
+            self.cards_on_hand.append(card)
 
     def identify_card(self, card_name):
         for card in self.cards_on_hand:
@@ -71,18 +98,24 @@ class Player(Hero):
 
             for new_key, new_values in values.items():
                 if new_key == "hp":
-                    for player in effect_for:
-                        player.hp += new_values
+                    if self.check_max_hp(new_values):
+                        for player in effect_for:
+                            player.hp += new_values
+
                 elif new_key == "attack":
                     for player in effect_for:
                         player.attack += new_values
+
                 elif new_key == "money":
                     for player in effect_for:
                         player.money += new_values
+
                 elif new_key == "card":
-                    for player in effect_for:
-                        for _ in range(new_values):
-                            player.take_card()
+                    if self.check_max_card(new_values):
+                        for player in effect_for:
+                            for _ in range(new_values):
+                                player.take_card()
+
                 elif new_key == "death_eater":
                     for player in effect_for:
                         pass
