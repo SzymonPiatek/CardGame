@@ -123,3 +123,16 @@ def test_player_shuffle_cards(player_one):
     assert len(player_one.cards_on_hand) == 5
     assert len(player_one.cards_to_draw) == 5
     assert len(player_one.cards_played) == 0
+
+def test_player_death(player_one):
+    player_one.active = True
+    
+    assert player_one.hp == 10
+    assert len(player_one.cards_on_hand) == 5
+
+    player_one.hp = 0
+
+    player_one.check_max_hp(0)
+
+    assert player_one.death == True
+    assert len(player_one.cards_on_hand) == 3
