@@ -1,5 +1,15 @@
+import pytest
 from game.cards.card import Card
 from game.heroes.player import Player
+
+
+@pytest.fixture()
+def player_one():
+    return Player(hero_id=0)
+
+@pytest.fixture()
+def player_two():
+    return Player(hero_id=1)
 
 
 def test_card_for_hero():
@@ -88,11 +98,7 @@ def test_villain_card():
     }
     assert new_card_hp == 6
 
-def test_use_card_for_hero():
-    # Players
-    player_one = Player(hero_id=0) 
-    player_two = Player(hero_id=1) 
-
+def test_use_card_for_hero(player_one, player_two):
     players = [player_one, player_two]
 
     # Test actual deck
@@ -111,11 +117,7 @@ def test_use_card_for_hero():
     assert len(player_one.cards_on_hand) == 4
     assert len(player_one.cards_played) == 1
 
-def test_use_card_to_buy():
-    # Players
-    player_one = Player(hero_id=0) 
-    player_two = Player(hero_id=1) 
-
+def test_use_card_to_buy(player_one, player_two):
     players = [player_one, player_two]
 
     # Cards

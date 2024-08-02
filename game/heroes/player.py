@@ -31,6 +31,7 @@ class Player(Hero):
         self.cards_on_hand = []
         self.cards_to_draw = self.cards.copy()
         self.cards_played = []
+        self.cards_player_round = []
 
         self.start()
 
@@ -64,7 +65,7 @@ class Player(Hero):
                 return False
             else:
                 return True
-
+            
     def take_card(self):
         if len(self.cards_to_draw) >= 1:
             card = random.sample(self.cards_to_draw, 1)[0]
@@ -75,8 +76,11 @@ class Player(Hero):
         for card in self.cards_on_hand:
             if card.name == card_name:
                 return card
+            
+    def choose_effect(self, card, effect):
+        return card.effect[effect]
 
-    def use_card(self, card, players):
+    def use_card(self, card, players, effect=0):
         all_players = players.copy()
         active_player = False
         other_players = []
@@ -88,7 +92,12 @@ class Player(Hero):
                 other_players.append(player)
 
         effect_for = False
-        for key, values in card.effect.items():
+        card_effect = None
+        if len(card.effect) > 1:
+            card_effect = self.choose_effect(card, effect)
+        else:
+            card_effect = card.effect    
+        for key, values in card_effect.items():
             if key == "active_player":
                 effect_for = [active_player]
             elif key == "other_players":
@@ -122,3 +131,4 @@ class Player(Hero):
 
         self.cards_on_hand.remove(card)
         self.cards_played.append(card)
+        self.cards_player_round.append(card)
