@@ -93,5 +93,33 @@ def test_player_end_turn(player_one, player_two):
     assert len(player_one.cards_to_draw) == 5
     assert len(player_one.cards_played) == 5
 
+    player_one.end_turn()
 
+    assert player_one.active == False
+    assert len(player_one.cards_on_hand) == 5
+    assert len(player_one.cards_to_draw) == 0
+    assert len(player_one.cards_played) == 5
+
+def test_player_shuffle_cards(player_one):
+    player_one.active = True
+
+    assert len(player_one.cards_on_hand) == 5
+    assert len(player_one.cards_to_draw) == 5
+    assert len(player_one.cards_played) == 0
+    assert len(player_one.cards) == 10
+
+    player_one.cards_on_hand = []
+    player_one.cards_to_draw = []
+    player_one.cards_played = player_one.cards
     
+
+    assert len(player_one.cards_on_hand) == 0
+    assert len(player_one.cards_to_draw) == 0
+    assert len(player_one.cards) == 10
+    assert len(player_one.cards_played) == 10
+
+    player_one.end_turn()
+
+    assert len(player_one.cards_on_hand) == 5
+    assert len(player_one.cards_to_draw) == 5
+    assert len(player_one.cards_played) == 0

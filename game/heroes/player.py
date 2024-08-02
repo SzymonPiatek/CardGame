@@ -38,16 +38,16 @@ class Player(Hero):
     def shuffle_cards(self):
         self.cards_to_draw = self.cards_played.copy()
         self.cards_played = []
-        random.shuffle(self.cards_to_draw)
 
     def end_turn(self):
-        self.active = False
-        
-        while len(self.cards_on_hand) != 5:
-            if len(self.cards_to_draw) > 0:
-                self.take_card()
-            else:
-                self.shuffle_cards()
+        if self.active:
+            self.active = False
+            
+            while len(self.cards_on_hand) != 5:
+                if len(self.cards_to_draw) > 0:
+                    self.take_card()
+                else:
+                    self.shuffle_cards()
 
     def start(self):
         cards = random.sample(self.cards_to_draw, 5)
@@ -96,14 +96,8 @@ class Player(Hero):
 
     def use_card(self, card, players, effect=0):
         all_players = players.copy()
-        active_player = None
-        other_players = []
-
-        for player in players:
-            if player.active:
-                active_player = player
-            else:
-                other_players.append(player)
+        active_player = next((player for player in players if player.active), None)
+        other_players = [player for player in players if not player.active]
 
         effect_for = False
         card_effect = None
