@@ -1,70 +1,97 @@
+import pytest
 from game.heroes.player import Player
 from game.cards.card import Card
 
 
-def test_player():
-    new_player = Player(hero_id=0)
+@pytest.fixture()
+def player_one():
+    return Player(hero_id=0)
+
+@pytest.fixture()
+def player_two():
+    return Player(hero_id=1)
+
+
+def test_player(player_one):
     
-    assert new_player.name == "Harry Potter"
-    assert new_player.hp == 10
-    assert new_player.money == 0
-    assert new_player.attack == 0
-    assert len(new_player.cards) == 10
-    assert len(new_player.cards_on_hand) == 5
-    assert len(new_player.cards_to_draw) == 5
-    assert len(new_player.cards_played) == 0
+    assert player_one.name == "Harry Potter"
+    assert player_one.hp == 10
+    assert player_one.money == 0
+    assert player_one.attack == 0
+    assert len(player_one.cards) == 10
+    assert len(player_one.cards_on_hand) == 5
+    assert len(player_one.cards_to_draw) == 5
+    assert len(player_one.cards_played) == 0
 
-def test_player_take_card():
-    new_player = Player(hero_id=0)
+def test_player_take_card(player_one):
 
-    assert len(new_player.cards_on_hand) == 5
-    assert len(new_player.cards_to_draw) == 5
+    assert len(player_one.cards_on_hand) == 5
+    assert len(player_one.cards_to_draw) == 5
 
     # First card
-    new_player.take_card()
+    player_one.take_card()
 
-    assert len(new_player.cards_on_hand) == 6
-    assert len(new_player.cards_to_draw) == 4
+    assert len(player_one.cards_on_hand) == 6
+    assert len(player_one.cards_to_draw) == 4
 
     # All card to draw
-    new_player.take_card()
-    new_player.take_card()
-    new_player.take_card()
-    new_player.take_card()
+    player_one.take_card()
+    player_one.take_card()
+    player_one.take_card()
+    player_one.take_card()
 
-    assert len(new_player.cards_on_hand) == 10
-    assert len(new_player.cards_to_draw) == 0
+    assert len(player_one.cards_on_hand) == 10
+    assert len(player_one.cards_to_draw) == 0
 
     # Test max validation
-    new_player.take_card()
+    player_one.take_card()
 
-    assert len(new_player.cards_on_hand) == 10
-    assert len(new_player.cards_to_draw) == 0
+    assert len(player_one.cards_on_hand) == 10
+    assert len(player_one.cards_to_draw) == 0
 
-def test_player_choose_effect():
-    new_player = Player(hero_id=0)
+def test_player_choose_effect(player_one):
     new_card = Card(card_name="Reparo")
 
-    new_player.active = True
-    players = [new_player]
+    player_one.active = True
+    players = [player_one]
 
-    assert len(new_player.cards_on_hand) == 5
-    assert len(new_player.cards_to_draw) == 5
+    assert len(player_one.cards_on_hand) == 5
+    assert len(player_one.cards_to_draw) == 5
 
-    new_player.cards_on_hand.append(new_card)
+    player_one.cards_on_hand.append(new_card)
 
-    assert len(new_player.cards_on_hand) == 6
+    assert len(player_one.cards_on_hand) == 6
 
     if len(new_card.effect) > 1:
-        new_player.use_card(new_card, players, effect=1)
-        assert len(new_player.cards_on_hand) == 6
-        assert len(new_player.cards_to_draw) == 4
-        assert len(new_player.cards_played) == 1
-        assert len(new_player.cards_player_round) == 1
+        player_one.use_card(new_card, players, effect=1)
+        assert len(player_one.cards_on_hand) == 6
+        assert len(player_one.cards_to_draw) == 4
+        assert len(player_one.cards_played) == 1
+        assert len(player_one.cards_player_round) == 1
     else:
-        new_player.use_card(new_card, players)
-        assert len(new_player.cards_on_hand) == 5
-        assert len(new_player.cards_to_draw) == 5
-        assert len(new_player.cards_played) == 1
-        assert len(new_player.cards_player_round) == 1
+        player_one.use_card(new_card, players)
+        assert len(player_one.cards_on_hand) == 5
+        assert len(player_one.cards_to_draw) == 5
+        assert len(player_one.cards_played) == 1
+        assert len(player_one.cards_player_round) == 1
+
+def test_player_end_turn(player_one, player_two):
+    player_one.active = True
+    players = [player_one, player_two]
+
+    assert len(player_one.cards_on_hand) == 5
+    assert len(player_one.cards_to_draw) == 5
+    assert len(player_one.cards_played) == 0
+    
+    player_one.use_card(card=player_one.cards_on_hand[0], players=players)
+    player_one.use_card(card=player_one.cards_on_hand[0], players=players)
+    player_one.use_card(card=player_one.cards_on_hand[0], players=players)
+    player_one.use_card(card=player_one.cards_on_hand[0], players=players)
+    player_one.use_card(card=player_one.cards_on_hand[0], players=players)
+
+    assert len(player_one.cards_on_hand) == 0
+    assert len(player_one.cards_to_draw) == 5
+    assert len(player_one.cards_played) == 5
+
+
     

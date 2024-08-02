@@ -35,6 +35,20 @@ class Player(Hero):
 
         self.start()
 
+    def shuffle_cards(self):
+        self.cards_to_draw = self.cards_played.copy()
+        self.cards_played = []
+        random.shuffle(self.cards_to_draw)
+
+    def end_turn(self):
+        self.active = False
+        
+        while len(self.cards_on_hand) != 5:
+            if len(self.cards_to_draw) > 0:
+                self.take_card()
+            else:
+                self.shuffle_cards()
+
     def start(self):
         cards = random.sample(self.cards_to_draw, 5)
 
@@ -68,7 +82,7 @@ class Player(Hero):
             
     def take_card(self):
         if len(self.cards_to_draw) >= 1:
-            card = random.sample(self.cards_to_draw, 1)[0]
+            card = self.cards_to_draw[0]
             self.cards_to_draw.remove(card)
             self.cards_on_hand.append(card)
 
@@ -82,7 +96,7 @@ class Player(Hero):
 
     def use_card(self, card, players, effect=0):
         all_players = players.copy()
-        active_player = False
+        active_player = None
         other_players = []
 
         for player in players:
