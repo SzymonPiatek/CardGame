@@ -60,9 +60,11 @@ def test_player_choose_effect():
         assert len(new_player.cards_on_hand) == 6
         assert len(new_player.cards_to_draw) == 4
         assert len(new_player.cards_played) == 1
+        assert len(new_player.cards_player_round) == 1
     else:
         new_player.use_card(new_card, players)
         assert len(new_player.cards_on_hand) == 5
         assert len(new_player.cards_to_draw) == 5
         assert len(new_player.cards_played) == 1
+        assert len(new_player.cards_player_round) == 1
     
