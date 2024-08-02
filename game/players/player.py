@@ -3,21 +3,18 @@ from game.cards.card import Card
 import random
 
 
-class Hero:
+class Player():
     def __init__(self, hero_id):
         self.hero = settings["hero"][hero_id]
         self.name = self.hero["name"]
         self.description = self.hero["description"]
-        self.cards = []
 
-        for card in self.hero["start_deck"]:
-            new_card = Card(list(card.keys())[0])
-            self.cards.append(new_card)
-
-
-class Player(Hero):
-    def __init__(self, hero_id):
-        super().__init__(hero_id)
+        # Cards
+        self.cards = [Card(list(card.keys())[0]) for card in self.hero["start_deck"]]
+        self.cards_on_hand = []
+        self.cards_to_draw = self.cards.copy()
+        self.cards_played = []
+        self.cards_player_round = []
         
         # Values
         self.hp = 10
@@ -27,13 +24,11 @@ class Player(Hero):
         # Additional
         self.active = False
 
-        # Cards
-        self.cards_on_hand = []
-        self.cards_to_draw = self.cards.copy()
-        self.cards_played = []
-        self.cards_player_round = []
-
         self.start()
+
+    def start(self):
+        self.cards_on_hand = random.sample(self.cards_to_draw, 5)
+        self.cards_to_draw = [card for card in self.cards_to_draw if card not in self.cards_on_hand]
 
     def shuffle_cards(self):
         self.cards_to_draw = self.cards_played.copy()
@@ -48,13 +43,6 @@ class Player(Hero):
                     self.take_card()
                 else:
                     self.shuffle_cards()
-
-    def start(self):
-        cards = random.sample(self.cards_to_draw, 5)
-
-        for card in cards:
-            self.cards_on_hand.append(card)
-            self.cards_to_draw.remove(card)
 
     def check_max_hp(self, value):
         if value >= 1:
