@@ -9,8 +9,8 @@ from game.cards.dark_arts_cards import dark_arts_cards
 
 @pytest.fixture
 def board():
-    player_one = Player(0)
-    player_two = Player(1)
+    player_one = Player(hero_id=0)
+    player_two = Player(hero_id=1)
 
     return Board(players=[player_one, player_two], cards_to_buy=cards_to_buy, dark_arts_cards=dark_arts_cards, place_cards=place_cards, villain_cards=villain_cards)
 
@@ -23,24 +23,62 @@ def test_board_active_player(board):
     assert board.place_cards
     assert board.villain_cards
     assert board.death_eater == 0
+    assert board.dark_arts_cards_to_take == 1
 
+    # Round 1
+    assert board.active_player
+
+    assert len(board.active_player.cards_to_draw) == 5
+    assert len(board.active_player.cards_on_hand) == 5
+    assert len(board.active_player.cards_played) == 0
+
+    # Variables
+    before_active = board.active_player
+
+    # Round 2
     board.next_turn()
 
-    active_player = []
-    for player in board.players:
-        if player.active:
-            active_player.append(player)
+    assert board.active_player
+    assert before_active != board.active_player
 
-    assert len(active_player) == 1
+    assert len(before_active.cards_to_draw) == 0
+    assert len(before_active.cards_on_hand) == 5
+    assert len(before_active.cards_played) == 5
 
+    assert len(board.active_player.cards_to_draw) == 5
+    assert len(board.active_player.cards_on_hand) == 5
+    assert len(board.active_player.cards_played) == 0
+
+    # Variables
+    before_active = board.active_player
+
+    # Round 3
     board.next_turn()
 
-    assert board.players[board.player_turn_count].active == True
+    assert board.active_player
+    assert before_active != board.active_player
 
-    new_active_player = []
-    for player in board.players:
-        if player.active:
-            new_active_player.append(player)
+    assert len(before_active.cards_to_draw) == 0
+    assert len(before_active.cards_on_hand) == 5
+    assert len(before_active.cards_played) == 5
 
-    assert len(new_active_player) == 1
-    assert new_active_player != active_player
+    assert len(board.active_player.cards_to_draw) == 0
+    assert len(board.active_player.cards_on_hand) == 5
+    assert len(board.active_player.cards_played) == 5
+
+    # Variables
+    before_active = board.active_player
+
+    # Round 4
+    board.next_turn()
+
+    assert board.active_player
+    assert before_active != board.active_player
+
+    assert len(before_active.cards_to_draw) == 5
+    assert len(before_active.cards_on_hand) == 5
+    assert len(before_active.cards_played) == 0
+
+    assert len(board.active_player.cards_to_draw) == 0
+    assert len(board.active_player.cards_on_hand) == 5
+    assert len(board.active_player.cards_played) == 5

@@ -40,11 +40,14 @@ class Player():
                 self.cards_on_hand.remove(self.cards_on_hand[0])
 
     def draw_new_hand(self):
-        while len(self.cards_on_hand) != 5:
-            if len(self.cards_to_draw) > 0:
+        while len(self.cards_on_hand) < 5:
+            if self.cards_to_draw:
                 self.take_card()
             else:
-                self.shuffle_cards()
+                if self.cards_played:
+                    self.shuffle_cards()
+                else:
+                    break 
 
     def shuffle_cards(self):
         self.cards_to_draw = self.cards_played.copy()
@@ -52,6 +55,13 @@ class Player():
 
     def end_turn(self):
         if self.active:
+            self.active = False
+            
+            for card in self.cards_on_hand:
+                self.cards_played.append(card)
+
+            self.cards_on_hand = []
+                
             self.draw_new_hand()
             self.cards_played_round = []
             
