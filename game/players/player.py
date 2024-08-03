@@ -14,7 +14,7 @@ class Player():
         self.cards_on_hand = random.sample(self.cards, 5)
         self.cards_to_draw = [card for card in self.cards if card not in self.cards_on_hand]
         self.cards_played = []
-        self.cards_player_round = []
+        self.cards_played_round = []
         
         # Values
         self.hp = 10
@@ -52,9 +52,8 @@ class Player():
 
     def end_turn(self):
         if self.active:
-            self.active = False
             self.draw_new_hand()
-            self.cards_player_round = []
+            self.cards_played_round = []
             
     def check_max_hp(self, value):
         if self.hp == 10:
@@ -138,4 +137,4 @@ class Player():
 
         self.cards_on_hand.remove(card)
         self.cards_played.append(card)
-        self.cards_player_round.append(card)
+        self.cards_played_round.append(card)

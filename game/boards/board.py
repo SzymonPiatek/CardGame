@@ -14,10 +14,15 @@ class Board():
         self.death_eater = 0
 
         self.player_turn_count = 0
+        self.players[self.player_turn_count].active = True
 
     def next_turn(self):
+        self.players[self.player_turn_count].end_turn()
+        for player in self.players:
+            player.active = False
+
+        self.player_turn_count += 1
         if self.player_turn_count == (len(self.players)):
             self.player_turn_count = 0
 
         self.players[self.player_turn_count].active = True
-        self.player_turn_count += 1
