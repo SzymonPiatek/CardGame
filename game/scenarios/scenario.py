@@ -1,6 +1,7 @@
 from .first import scenario as first_scenario
 import random
 
+
 class Scenario:
     def __init__(self, scenario_id):
         self.match_scenario(scenario_id)

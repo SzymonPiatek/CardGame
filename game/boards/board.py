@@ -1,4 +1,3 @@
-from settings import settings
 from game.cards.card import Card
 from game.scenarios.scenario import Scenario
 import random
