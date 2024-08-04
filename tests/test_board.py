@@ -1,10 +1,6 @@
 import pytest
 from game.players.player import Player
 from game.boards.board import Board
-from game.scenarios.first.scenario import cards_to_buy
-from game.scenarios.first.scenario import place_cards
-from game.scenarios.first.scenario import villain_cards
-from game.scenarios.first.scenario import dark_arts_cards
 
 
 @pytest.fixture
@@ -12,7 +8,7 @@ def board():
     player_one = Player(hero_id=0)
     player_two = Player(hero_id=1)
 
-    return Board(players=[player_one, player_two], cards_to_buy=cards_to_buy, dark_arts_cards=dark_arts_cards, place_cards=place_cards, villain_cards=villain_cards)
+    return Board(players=[player_one, player_two], scenario_id=0)
 
 
 def test_board_active_player(board):
