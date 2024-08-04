@@ -67,13 +67,13 @@ def test_player_choose_effect(player_one):
         assert len(player_one.cards_on_hand) == 6
         assert len(player_one.cards_to_draw) == 4
         assert len(player_one.cards_played) == 1
-        assert len(player_one.cards_player_round) == 1
+        assert len(player_one.cards_played_round) == 1
     else:
         player_one.use_card(new_card, players)
         assert len(player_one.cards_on_hand) == 5
         assert len(player_one.cards_to_draw) == 5
         assert len(player_one.cards_played) == 1
-        assert len(player_one.cards_player_round) == 1
+        assert len(player_one.cards_played_round) == 1
 
 def test_player_end_turn(player_one, player_two):
     player_one.active = True

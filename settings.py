@@ -1,4 +1,4 @@
-from game.cards.cards_for_heroes import each_card_for_heroes
+from game.scenarios.first.scenario import each_card_for_heroes
 
 settings = {
     "title": "Card Game",

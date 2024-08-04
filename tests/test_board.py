@@ -1,10 +1,10 @@
 import pytest
 from game.players.player import Player
 from game.boards.board import Board
-from game.cards.cards_to_buy import cards_to_buy
-from game.cards.place_cards import place_cards
-from game.cards.villain_cards import villain_cards
-from game.cards.dark_arts_cards import dark_arts_cards
+from game.scenarios.first.scenario import cards_to_buy
+from game.scenarios.first.scenario import place_cards
+from game.scenarios.first.scenario import villain_cards
+from game.scenarios.first.scenario import dark_arts_cards
 
 
 @pytest.fixture
