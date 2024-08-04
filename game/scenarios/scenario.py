@@ -5,11 +5,6 @@ class Scenario:
     def __init__(self, scenario_id):
         self.match_scenario(scenario_id)
 
-        self.place_cards = first_scenario.place_cards
-        random.shuffle(self.dark_arts_cards)
-        random.shuffle(self.villain_cards)
-        random.shuffle(self.cards_to_buy)
-
     def match_scenario(self, scenario_id):
         match scenario_id:
             case 0:
@@ -23,3 +18,9 @@ class Scenario:
                 self.villain_cards = []
                 self.cards_to_buy = []
 
+        if self.dark_arts_cards:
+            random.shuffle(self.dark_arts_cards)
+        if self.villain_cards:
+            random.shuffle(self.villain_cards)
+        if self.villain_cards:
+            random.shuffle(self.cards_to_buy)
