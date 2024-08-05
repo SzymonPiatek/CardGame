@@ -30,7 +30,7 @@ each_card_for_heroes = {
     "Hedwiga": {
         "card_type": 2,
         "effect": {
-            "active": {
+            "active_player": {
                 "attack": 1,
                 # or hp 2
             }
@@ -40,10 +40,8 @@ each_card_for_heroes = {
         "card_type": 1,
         "effect": {
             "active_player": {
-                "active_player": {
-                    "attack": 1
-                    # If you defeat the villain you will receive 1 coin
-                }
+                "attack": 1
+                # If you defeat the villain you will receive 1 coin
             }
         }
     },
@@ -59,7 +57,7 @@ each_card_for_heroes = {
     "Świstoświnka": {
         "card_type": 2,
         "effect": {
-            "active": {
+            "active_player": {
                 "attack": 1,
                 # or hp 2
             }
@@ -69,10 +67,8 @@ each_card_for_heroes = {
         "card_type": 1,
         "effect": {
             "active_player": {
-                "active_player": {
-                    "money": 1
-                    # If you discard this card you will receive 2 coins
-                }
+                "money": 1
+                # If you discard this card you will receive 2 coins
             }
         }
     },
@@ -88,7 +84,7 @@ each_card_for_heroes = {
     "Teodora": {
         "card_type": 2,
         "effect": {
-            "active": {
+            "active_player": {
                 "attack": 1,
                 # or hp 2
             }
@@ -98,10 +94,8 @@ each_card_for_heroes = {
         "card_type": 1,
         "effect": {
             "active_player": {
-                "active_player": {
-                    "money": 1
-                    # You may place purchased spell cards on top of your deck instead of in your discard pile
-                }
+                "money": 1
+                # You may place purchased spell cards on top of your deck instead of in your discard pile
             }
         }
     },
@@ -117,7 +111,7 @@ each_card_for_heroes = {
     "Krzywołap": {
         "card_type": 2,
         "effect": {
-            "active": {
+            "active_player": {
                 "attack": 1,
                 # or hp 2
             }

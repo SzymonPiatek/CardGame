@@ -30,12 +30,18 @@ each_spell_card = {
     "Reparo": {
         "buy_cost": 3,
         "card_type": 0,
-        "effect": {
-            "active_player": {
-                "money": 2,
-                # or card 1
+        "effect": [
+            {
+                "active_player": {
+                    "money": 2,
+                },
+            },
+            {
+                "active_player": {
+                    "card": 1,
+                },
             }
-        }
+        ]
     },
     "Wingardium leviosa": {
         "buy_cost": 2,
