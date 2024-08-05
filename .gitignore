@@ -3,8 +3,4 @@ venv
 
 .pytest_cache
 __pycache__
-game/__pycache__
-tests/__pycache__
-game/cards/__pycache__
-game/heroes/__pycache__
-game/scenarios/__pycache__
+**/__pycache__
